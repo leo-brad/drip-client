@@ -1,7 +1,14 @@
 import React from 'react';
-import { updateContent, } from '~/render/script/action/content';
-import { addInstance, reduceInstance, } from '~/render/script/action/instance';
-import { updatePlugins, } from '~/render/script/action/plugins';
+import {
+  updateContent,
+} from '~/render/script/action/content';
+import {
+  addInstance,
+  reduceInstance,
+} from '~/render/script/action/instance';
+import {
+  updatePlugins,
+} from '~/render/script/action/plugins';
 
 class Communication {
   constructor({ store, }) {
@@ -35,7 +42,7 @@ class Communication {
             break;
         }
       }
-      if (event === 'plugin') {
+      if (event === 'package') {
         const [_, plugins,] = data;
         this.store.dispatch(updatePlugins(plugins));
       }
