@@ -4,6 +4,7 @@ import Ipc from '~/main/class/Ipc';
 
 const ipc = new Ipc();
 new ReceiveData(ipc).start();
+
 contextBridge.exposeInMainWorld('ipc', {
   on: ipc.on.bind(ipc),
   send: ipc.on.bind(ipc),
