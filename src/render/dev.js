@@ -7,30 +7,45 @@ import Home from '~/render/script/page/Home';
 import reducer from '~/render/script/reducer';
 import '~/render/style/index.css';
 
+class Shell extends React.Component {
+  render() {
+    return <div/>;
+  }
+}
+
 const preload = {
   content: {
     index: {
-      'plugin1:instance1': 0,
-      'plugin1:instace2': 1,
+      '[shell]:shell1': 1,
+      '[shell]:shell2': 0,
     },
     contents: [
       [
         {
-          instance: 'plugin1:instance1',
+          field: 'stderr',
+          instance: '[shell]:shell2',
+          string: '/private/tmp/example/.drip/local/package/shell/dist/index.js:10\n    throw error;\n    ^\n\nError: Command failed: ls /fafsdfsd\n\nls: /fafsdfsd: No such file',
         }
       ],
       [
         {
-          instance: 'plugin1:instance2',
+          field: 'stderr',
+          instance: '[shell]:shell1',
+          string: '/private/tmp/example/.drip/local/package/shell/dist/index.js:10\n    throw error;\n    ^\n\nError: Command failed: ls /fasdfsadf\n\nls: /fasdfsadf: No such fil',
         },
       ],
     ],
   },
   instance: {
-    instance: 'plugin1',
+    instance: '[shell]:shell2',
     instances: [
-      'plugin1', 'plugin2'
+      '[shell]:shell2', '[shell]:shell1',
     ],
+  },
+  pkg: {
+    pkg: {
+      shell: Shell,
+    }
   },
 };
 
