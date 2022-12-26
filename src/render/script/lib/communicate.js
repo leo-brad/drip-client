@@ -7,8 +7,8 @@ import {
   reduceInstance,
 } from '~/render/script/action/instance';
 import {
-  updatePlugins,
-} from '~/render/script/action/plugins';
+  updatePkg,
+} from '~/render/script/action/pkg';
 
 export default function communicate(store) {
   const { ipc, } = window;
@@ -32,9 +32,9 @@ export default function communicate(store) {
           break;
       }
     }
-    if (event === 'package') {
-      const [_, plugins,] = data;
-      store.dispatch(updatePlugins(plugins));
+    if (event === 'pkg') {
+      const [_, pkg] = data;
+      store.dispatch(updatePkg(pkg));
     }
   });
 }
