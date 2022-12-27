@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-  updateContent,
-} from '~/render/script/action/content';
-import {
-  addInstance,
-  reduceInstance,
-} from '~/render/script/action/instance';
-import {
-  updatePkg,
-} from '~/render/script/action/pkg';
+import { updateContent, } from '~/render/script/action/content';
+import { addInstance, reduceInstance, } from '~/render/script/action/instance';
+import { updatePkg, } from '~/render/script/action/pkg';
+import { restartMain, } from '~/render/script/action/main';
 
 export default function communicate(store) {
   const { ipc, } = window;
@@ -35,6 +29,9 @@ export default function communicate(store) {
     if (event === 'pkg') {
       const [_, pkg] = data;
       store.dispatch(updatePkg(pkg));
+    }
+    if (event === 'restart') {
+      store.dispatch(restartMain());
     }
   });
 }
