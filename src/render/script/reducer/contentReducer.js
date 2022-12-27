@@ -2,6 +2,12 @@ export default function contentReducer(state = { index: {}, contents: [], }, act
   let ans = state;
   if (action.type === 'content/update') {
     const { instance, field, string, } = action;
+    if (field === 'stderr') {
+      new Notification(
+        'drip',
+        { body:  instance +  ' stderr.', },
+      );
+    }
     const { contents, index, } = state;
     if (index[instance] === undefined) {
       index[instance] = contents.length;
