@@ -5,7 +5,7 @@ export default function contentReducer(state = { index: {}, contents: [], }, act
     if (field === 'stderr') {
       new Notification(
         'drip',
-        { body:  instance +  ' stderr.', },
+        { body:  'instance ' + instance +  ' happen a wrong.', },
       );
     }
     const { contents, index, } = state;
