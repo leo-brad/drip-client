@@ -23,7 +23,6 @@ class Tab extends React.Component {
               <
                 TabButton
                 t="f" i={i} key={k} instance={instance} status={status}
-                ci={changeInstance}
               />
             );
           case instances.length - 1:
@@ -31,7 +30,6 @@ class Tab extends React.Component {
               <
                 TabButton
                 t="l" i={i} key={k} instance={instance} status={status}
-                ci={changeInstance}
               />
             );
           default:
@@ -39,7 +37,6 @@ class Tab extends React.Component {
               <
                 TabButton
                 i={i} key={k} instance={instance} status={status}
-                ci={changeInstance}
               />
             );
         }
