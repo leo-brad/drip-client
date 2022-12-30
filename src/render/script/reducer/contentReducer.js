@@ -2,13 +2,13 @@ export default function contentReducer(state = { index: {}, contents: [], }, act
   let ans = state;
   if (action.type === 'content/update') {
     const { instance, field, string, } = action;
+    const { contents, index, } = state;
     if (field === 'stderr') {
       new Notification(
         'drip',
         { body:  'instance ' + instance +  ' happen a wrong.', },
       );
     }
-    const { contents, index, } = state;
     if (index[instance] === undefined) {
       index[instance] = contents.length;
     }
@@ -16,7 +16,7 @@ export default function contentReducer(state = { index: {}, contents: [], }, act
     if (!Array.isArray(contents[i])) {
       contents[i] = [];
     }
-    contents[i].push({ instance, field, string, });
+    contents[i].push({ field, string, });
     ans = {
       index: index,
       contents: contents,

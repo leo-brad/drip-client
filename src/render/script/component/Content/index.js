@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './index.module.css';
+import eventEmitter from '~/render/script/obj/eventEmitter';
 
 class Content extends React.Component {
   render() {
@@ -9,31 +10,23 @@ class Content extends React.Component {
         contents,
       },
       instance: {
-        instance: i,
+        instance,
       },
       pkg: {
         pkg,
       },
     } = this.props;
-    const idx = index[i];
+    const idx = index[instance];
     let content;
     if (typeof idx === 'number' && contents[idx]) {
-      content = contents[idx].map((e, j) => {
-        const { instance, field, string, } = e;
-        const [_, p] = instance.match(/^\[(\w+)\]:(\w+)$/);
-        const Pkg = pkg[p];
-        return (
-          <li key={j}>
-            <Pkg situation={field} string={string} serial={j+1} />
-          </li>
-        );
-      });
+      const [_, p] = instance.match(/^\[(\w+)\]:(\w+)$/);
+      const Pkg = pkg[p];
+      const data = contents[idx];
+      content = <Pkg data={data} eventEmitter={eventEmitter} />
     } else {
       content = null;
     }
-    return (
-      <ul className={style.contentList}>{content}</ul>
-    );
+    return content;
   }
 }
 
