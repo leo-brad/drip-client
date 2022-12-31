@@ -1,8 +1,10 @@
-export default function contentReducer(state = { index: {}, contents: [], }, action) {
-  let ans = state;
-  if (action.type === 'content/update') {
-    const { instance, field, string, } = action;
-    const { contents, index, } = state;
+import global from '~/render/script/obj/global';
+
+export default function syncContent() {
+  const { content, emitter, } = global;
+  emitter.on('content/update', (data) => {
+    const { instance, field, string, } = data;
+    const { contents, index, } = content;
     if (field === 'stderr') {
       new Notification(
         'drip',
@@ -17,16 +19,15 @@ export default function contentReducer(state = { index: {}, contents: [], }, act
       contents[i] = [];
     }
     contents[i].push({ field, string, });
-    ans = {
-      index: index,
-      contents: contents,
+    global.content = {
+      index,
+      contents,
     };
-  }
-  if (action.type === 'main/restart') {
-    ans = {
+  });
+  emitter.on('content/reset', () => {
+    global.content = {
       index: {},
       contents: [],
     };
-  }
-  return ans;
+  });
 }

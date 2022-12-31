@@ -6,7 +6,12 @@ import store from '~/render/script/obj/store';
 import Home from '~/render/script/page/Home';
 import '~/render/style/index.css';
 import communicate from '~/render/script/lib/communicate';
-import onlineAndOffline from '~/render/script/lib/onlineAndOffline';
+import focusAndBlur from '~/render/script/lib/focusAndBlur';
+import syncContent from '~/render/script/lib/syncContent';
+
+communicate(store);
+focusAndBlur();
+syncContent();
 
 ReactDOM.render(
   <Provider store={store}>
@@ -19,5 +24,3 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-communicate(store);
-onlineAndOffline();
