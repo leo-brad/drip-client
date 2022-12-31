@@ -42,11 +42,6 @@ const preload = {
       '[shell]:shell2', '[shell]:shell1',
     ],
   },
-  pkg: {
-    pkg: {
-      shell: Shell,
-    }
-  },
 };
 
 const store = createStore(reducer, preload);
