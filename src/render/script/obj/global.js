@@ -1,13 +1,18 @@
 import Emitter from '~/render/script/class/Emitter';
 
+const emitter = new Emitter();
+
 const global = {
-  emitter: new Emitter(),
   pkg: {},
-  content: {
-    index: {},
-    contents: [],
-  },
+  content: {},
   component: {},
+  instance: '',
+  instances: [],
+  status: {},
+  share: {
+    emitter,
+    focus: true,
+  },
 };
 
 export default global;

@@ -1,7 +1,5 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore, } from 'redux';
 import { HashRouter, Routes, Route, } from 'react-router-dom';
 import Home from '~/render/script/page/Home';
 import reducer from '~/render/script/reducer';
