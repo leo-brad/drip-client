@@ -29,15 +29,20 @@ class Loader extends React.Component {
 
   componentDidMount() {
     const { status, } = this.props;
+    this.endAnimation();
     if (!status) {
-      this.startAnimation();
-      emitter.on('window/focus', this.startAnimation);
-      emitter.on('window/blur', this.endAnimation);
+      emitter.remove('window/focus', this.startAnimation);
+      emitter.remove('window/blur', this.endAnimation);
     }
   }
 
   componentWillUnmount() {
+    const { status, } = this.props;
     this.endAnimation();
+    if (!status) {
+      emitter.remove('window/focus', this.startAnimation);
+      emitter.remove('window/blur', this.endAnimation);
+    }
   }
 
   startAnimation() {
