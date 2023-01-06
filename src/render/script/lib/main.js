@@ -6,4 +6,8 @@ export default function main() {
   syncData();
   focusAndBlur();
   communicate();
+
+  setTimeout(() => {
+    window.ipc.send('render/ready');
+  }, 0);
 }
