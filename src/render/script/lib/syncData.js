@@ -52,12 +52,6 @@ function syncInstance() {
   emitter.on('instance/change', (instance) => {
     global.instance = instance;
   });
-  emitter.on('main/restart', () => {
-    global = Object.assign(global, {
-      instance: '',
-      instances: [],
-    });
-  });
 }
 
 function syncStatus() {
