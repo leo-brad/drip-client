@@ -4,7 +4,6 @@ import receiveData from '~/main/lib/receiveData';
 import Ipc from '~/main/class/Ipc';
 
 const ipc = new Ipc();
-//new ReceiveData(ipc).start();
 receiveData(ipc);
 
 contextBridge.exposeInMainWorld('ipc', {

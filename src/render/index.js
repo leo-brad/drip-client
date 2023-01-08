@@ -16,3 +16,8 @@ ReactDOM.render(
 );
 
 main();
+
+setTimeout(() => {
+  const { ipc, } = window;
+  ipc.send('render/ready');
+}, 0);
