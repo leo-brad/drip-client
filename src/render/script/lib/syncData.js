@@ -25,10 +25,6 @@ function syncContent() {
     i = content[instance];
     i.push({ field, string, });
   });
-  emitter.on('content/reset', () => {
-    global.content = {};
-    global.component = {};
-  });
 }
 
 function syncInstance() {
@@ -72,8 +68,27 @@ function syncStatus() {
   });
 }
 
+function syncMain() {
+  emitter.on('content/reset', () => {
+    emitter.reset();
+    global.pkg = {};
+    global.content = {};
+    global.component = {};
+    global.instance = '';
+    global.instances = [];
+    global.status = {};
+    global.share = {
+      emitter,
+      focus: true,
+    };
+    global.content = {};
+    global.component = {};
+  });
+}
+
 export default function syncData() {
   syncContent();
   syncInstance();
   syncStatus();
+  syncMain();
 }

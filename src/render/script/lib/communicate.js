@@ -48,7 +48,7 @@ export default function communicate(store) {
         break;
       }
       case 'restart': {
-        emitter.send('content/reset');
+        emitter.send('main/reset');
         break;
       }
     }
