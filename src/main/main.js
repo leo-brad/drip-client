@@ -1,5 +1,6 @@
 import { app, BrowserWindow, } from 'electron';
 import path from 'path';
+import fs from 'fs';
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -10,8 +11,13 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
-  //win.webContents.openDevTools();
+  win.webContents.openDevTools();
   win.loadFile('./index.html');
+  const [_1, _2, ...rest] = process.argv;
+  const message = {
+    argv: rest,
+  };
+  fs.writeFileSync(path.join(__dirname, 'message'), JSON.stringify(message));
 }
 
 app.whenReady().then(() => {

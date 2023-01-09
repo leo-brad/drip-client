@@ -10,7 +10,7 @@
     "build": "gulp build",
     "dev": "webpack serve --config webpack.config.dev.js",
     "pro": "webpack --config webpack.config.pro.js",
-    "start": "yarn run build && yarn run pro && electron dist/main.js"
+    "start": "yarn run build && yarn run pro && electron dist/main.js --port 3000"
   },
   "dependencies": {
     "@babel/preset-react": "^7.18.6",

@@ -1,10 +1,15 @@
+import path from 'path';
+import fs from 'fs';
 import { contextBridge, } from 'electron';
-//import ReceiveData from '~/main/class/ReceiveData';
 import receiveData from '~/main/lib/receiveData';
 import Ipc from '~/main/class/Ipc';
 
+const message = JSON.parse(fs.readFileSync(path.join(__dirname, 'message')));
+const {
+  argv,
+} = message;
 const ipc = new Ipc();
-receiveData(ipc);
+receiveData(ipc, argv);
 
 contextBridge.exposeInMainWorld('ipc', {
   on: ipc.on.bind(ipc),
