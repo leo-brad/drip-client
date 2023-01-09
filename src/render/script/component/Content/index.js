@@ -31,15 +31,11 @@ class Content extends OptimizeComponent {
       },
     } = global;
     if (focus) {
-      setTimeout(() => {
-        const { instance, } = global;
-        console.log(global);
-        console.log('instance', instance);
-        this.setState({
-          instance,
-        });
-        this.sendMountAndUnmount();
-      }, 0);
+      const { instance, } = global;
+      this.setState({
+        instance,
+      });
+      this.sendMountAndUnmount();
     }
   }
 
@@ -65,15 +61,13 @@ class Content extends OptimizeComponent {
   }
 
   syncInstance() {
-    setTimeout(() => {
-      const { instance: beforeInstance, } = this;
-      if (beforeInstance) {
-        emitter.remove(beforeInstance, this.dealEvent);
-      }
-      const { instance, } = global;
-      emitter.on(instance, this.dealEvent);
-      this.instance = instance;
-    }, 0);
+    const { instance: beforeInstance, } = this;
+    if (beforeInstance) {
+      emitter.remove(beforeInstance, this.dealEvent);
+    }
+    const { instance, } = global;
+    emitter.on(instance, this.dealEvent);
+    this.instance = instance;
   }
 
   bind() {

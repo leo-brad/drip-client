@@ -55,8 +55,8 @@ function syncInstance() {
 }
 
 function syncStatus() {
-  const { status, } = global;
   emitter.on('status/update', ({ instance, field, }) => {
+    const { status, } = global;
     status[instance] = field;
   });
 }
@@ -84,6 +84,7 @@ function syncMain() {
       emitter,
       focus: true,
     };
+    //console.log('RESET');
   });
 }
 

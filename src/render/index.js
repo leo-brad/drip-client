@@ -3,8 +3,13 @@ import React from 'react';
 import { HashRouter, Routes, Route, } from 'react-router-dom';
 import Home from '~/render/script/page/Home';
 import '~/render/style/index.css';
-import main from '~/render/script/lib/main';
+import communicate from '~/render/script/lib/communicate';
+import syncData from '~/render/script/lib/syncData';
+import focusAndBlur from '~/render/script/lib/focusAndBlur';
 import global from '~/render/script/obj/global';
+
+syncData();
+focusAndBlur();
 
 ReactDOM.render(
   <HashRouter>
@@ -15,9 +20,8 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-main();
+communicate();
 
 setTimeout(() => {
-  const { ipc, } = window;
-  ipc.send('render/ready');
+  window.ipc.send('render/ready');
 }, 0);
