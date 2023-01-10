@@ -8,9 +8,6 @@ import syncData from '~/render/script/lib/syncData';
 import focusAndBlur from '~/render/script/lib/focusAndBlur';
 import global from '~/render/script/obj/global';
 
-syncData();
-focusAndBlur();
-
 ReactDOM.render(
   <HashRouter>
     <Routes>
@@ -19,9 +16,3 @@ ReactDOM.render(
   </HashRouter>,
   document.getElementById('root'),
 );
-
-communicate();
-
-setTimeout(() => {
-  window.ipc.send('render/ready');
-}, 0);
