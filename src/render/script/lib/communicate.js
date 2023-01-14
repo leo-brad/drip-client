@@ -12,6 +12,7 @@ const {
 export default function communicate(store) {
   const { ipc, } = window;
   ipc.on('drip/data', (json) => {
+    console.log(json);
     const data = JSON.parse(json);
     const [event,] = data;
     switch (event) {

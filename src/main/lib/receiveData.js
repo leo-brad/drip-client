@@ -12,14 +12,14 @@ export default function receiveData(ipc, argv) {
   socket.setEncoding('utf-8');
   socket.on('data', (data) => {
     if (isReady) {
-      ipc.send('drip', data);
+      ipc.send('drip/data', data);
     } else {
       buffer.push(data);
     }
   });
   ipc.on('render/ready', () => {
     while (buffer.length > 0) {
-      ipc.send('drip', buffer.shift());
+      ipc.send('drip/data', buffer.shift());
     }
     isReady = true;
   });
