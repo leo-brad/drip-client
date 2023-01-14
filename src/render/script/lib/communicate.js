@@ -3,6 +3,7 @@ import addPkgs from '~/render/script/lib/addPkgs';
 import global from '~/render/script/obj/global';
 
 const {
+  location,
   share: {
     emitter,
   },
@@ -10,7 +11,7 @@ const {
 
 export default function communicate(store) {
   const { ipc, } = window;
-  ipc.on('drip', (json) => {
+  ipc.on('drip/data', (json) => {
     const data = JSON.parse(json);
     const [event,] = data;
     switch (event) {
@@ -52,6 +53,10 @@ export default function communicate(store) {
         break;
       }
     }
+  });
+  ipc.on('drip/error', (e) => {
+    global.error = e;
+    location.to('/error');
   });
 }
 
