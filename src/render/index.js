@@ -9,7 +9,8 @@ syncData();
 focusAndBlur();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Router />);
+const router = <Router />
+root.render(router);
 
 communicate();
 setTimeout(() => window.ipc.send('render/ready'), 0);

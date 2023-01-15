@@ -3,16 +3,16 @@ import addPkgs from '~/render/script/lib/addPkgs';
 import global from '~/render/script/obj/global';
 
 const {
+  router,
   location,
   share: {
     emitter,
   },
 } = global;
 
-export default function communicate(store) {
+export default function communicate() {
   const { ipc, } = window;
   ipc.on('drip/data', (json) => {
-    console.log(json);
     const data = JSON.parse(json);
     const [event,] = data;
     switch (event) {
@@ -57,6 +57,7 @@ export default function communicate(store) {
   });
   ipc.on('drip/error', (e) => {
     global.error = e;
+    router.addRoute('/error', require('~/render/script/page/Exception'));
     location.to('/error');
   });
 }
