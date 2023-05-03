@@ -1,10 +1,10 @@
 {
-  "name": "drip-gui",
+  "name": "drip-client",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "eric hart",
+  "author": "Leo Brad",
   "license": "MIT",
-  "description": "A gui for drip.",
+  "description": "Drip client pattern program.",
   "scripts": {
     "lint": "eslint ./src",
     "build": "gulp build",
